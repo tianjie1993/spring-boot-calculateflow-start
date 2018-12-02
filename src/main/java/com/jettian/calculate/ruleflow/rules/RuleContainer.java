@@ -4,6 +4,7 @@ import com.jettian.calculate.ruleflow.actionresult.ActionResult;
 import com.jettian.calculate.ruleflow.anno.RuleResult;
 import com.jettian.calculate.ruleflow.excption.RuleExcption;
 import com.jettian.calculate.ruleflow.knowledge.Knowledge;
+import com.jettian.calculate.ruleflow.util.RuleLocal;
 import com.jettian.calculate.utils.SpringUtil;
 import com.jettian.calculate.ruleflow.anno.KnowledgeNameAndSource;
 
@@ -45,6 +46,9 @@ public class RuleContainer {
 
     //解析规则字符串
     private void resolveRule(){
+        Map<String,Object> params = new HashMap<>();
+        params.putAll(RuleLocal.get());
+        RuleLocal.remove();
         if(null== rules || rules.isEmpty() || null==ruleKnowledge){
             throw new RuleExcption("rule string is null or knowledge is null,please check data");
         }
@@ -62,7 +66,7 @@ public class RuleContainer {
                             throw new RuleExcption("can not get "+knowledgeNameAndSource.clz().getSimpleName());
                         }
                         //获取公式参数值
-                        String value = String.valueOf(method.invoke(supplier,new HashMap<String,Object>()));
+                        String value = String.valueOf(method.invoke(supplier,params));
                         //对知识赋值
                         Method setmethod = ruleKnowledge.getClass().getMethod("set"+toUpperCaseFirstOne(field.getName()),Double.class);
                         setmethod.invoke(ruleKnowledge,Double.parseDouble(value));

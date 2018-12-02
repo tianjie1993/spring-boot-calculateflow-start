@@ -3,6 +3,7 @@ package com.jettian.calculate;
 import com.jettian.calculate.ruleflow.rules.Rule;
 import com.jettian.calculate.ruleflow.rules.RuleContainer;
 import com.jettian.calculate.ruleflow.util.RuleDriverUtil;
+import com.jettian.calculate.ruleflow.util.RuleLocal;
 import com.jettian.calculate.usedemo.RentalActionResult;
 import com.jettian.calculate.usedemo.RentalRuleKnowledge;
 import org.junit.Test;
@@ -20,6 +21,7 @@ public class DroolsApplicationTests {
     @Test
     public void ruleTest() {
         List<Rule> ruleList = new ArrayList<>();
+        RuleLocal.put("storeNo","2");
         ruleList.add(new Rule("当月销售额>20000","租金=当月销售额*0.1"));
         ruleList.add(new Rule("当月销售额<=20000","租金=当月销售额/3*1.06"));
         RentalActionResult rentalActionResult = new RentalActionResult();

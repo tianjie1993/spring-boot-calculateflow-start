@@ -15,6 +15,9 @@ public class KnowledgeSupplier {
 
     //获取当月销售额
     public Double getTheMonthSales(Map<String,Object> map){
-        return 2323D;
+        if("1".equals(map.get("storeNo")))
+            return 2323D;
+        else
+            return 10000d;
     }
 }
