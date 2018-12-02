@@ -33,4 +33,12 @@ public class RentalActionResult implements ActionResult {
     public void setRentalWithoutTax(String rentalWithoutTax) {
         this.rentalWithoutTax = rentalWithoutTax;
     }
+
+    @Override
+    public String toString() {
+        return "RentalActionResult{" +
+                "rentalWithTax='" + rentalWithTax + '\'' +
+                ", rentalWithoutTax='" + rentalWithoutTax + '\'' +
+                '}';
+    }
 }
