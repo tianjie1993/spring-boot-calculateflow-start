@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.jettian.calculate.ruleflow.config.RuleAutoConfig

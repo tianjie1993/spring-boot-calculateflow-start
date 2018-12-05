@@ -5,7 +5,7 @@ import com.jettian.calculate.ruleflow.anno.RuleResult;
 import com.jettian.calculate.ruleflow.excption.RuleExcption;
 import com.jettian.calculate.ruleflow.knowledge.Knowledge;
 import com.jettian.calculate.ruleflow.util.RuleLocal;
-import com.jettian.calculate.utils.SpringUtil;
+import com.jettian.calculate.utils.RuleContext;
 import com.jettian.calculate.ruleflow.anno.KnowledgeNameAndSource;
 
 import java.lang.reflect.Field;
@@ -61,7 +61,7 @@ public class RuleContainer {
                 if(null!=knowledgeNameAndSource){
                     if(isExist(rules,knowledgeNameAndSource.name())){
                         Method method = knowledgeNameAndSource.clz().getMethod(knowledgeNameAndSource.method(),Map.class);
-                        Object supplier = SpringUtil.getBean(knowledgeNameAndSource.clz());
+                        Object supplier = RuleContext.getBean(knowledgeNameAndSource.clz());
                         if(null==supplier){
                             throw new RuleExcption("can not get "+knowledgeNameAndSource.clz().getSimpleName());
                         }
