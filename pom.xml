@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.calculateflow</groupId>
+    <groupId>com.github.tianjie1993</groupId>
     <artifactId>calculateflow</artifactId>
-    <version>0.0.1-release</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,8 +21,6 @@
     </properties>
 
     <repositories>
-        <!-- TODO remove this once maven central replicates the jboss repository -->
-        <!-- Included so the examples sources in the distribution zip build out-of-the-box with maven -->
         <repository>
             <id>jboss-public-repository-group</id>
             <name>JBoss Public Repository Group</name>
@@ -80,12 +78,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
             <version>1.18.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <version>2.1.0.RELEASE</version>
         </dependency>
         <!-- Internal dependencies -->
         <dependency>
@@ -168,5 +160,15 @@
             <version>20.0</version>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
